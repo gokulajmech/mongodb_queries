@@ -1,0 +1,20 @@
+1.db.products.find().pretty();
+
+2.db.products.find({product_price:{$gt:400,$lt:800}})
+
+3.db.products.find({$or:[{product_price:{$lt:400}},{product_price:{$gt:600}}]})
+
+4.db.products.find({product_price:{$gte:500}}).limit(4)
+
+5.db.products.aggregate({$group:{_id:"$product_name",material:{$push:"$product_material"}}})
+
+6.db.products.find({id:{$in:["10"]}})
+
+7.db.products.find({product_name:1,product_material:1}).pretty()
+
+8.db.products.find({product_material:"Soft"})
+
+9. db.products.find({$and:[{product_color:"indigo"},{product_price:492}]})
+
+10.db.products.aggregate([{$group:{_id:"$product_price",count:{$sum:1}}},{$match:{count:{$gt:1}}}])
+    db.products.deleteMany({product_price:{$in:[47,36]}})
